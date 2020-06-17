@@ -1,0 +1,429 @@
+//<МИКСИНЫ>===============================================================================================
+@import "mixins.scss";
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,700&display=swap&subset=cyrillic-ext");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,700&display=swap&subset=cyrillic-ext");
+@import "fonts";
+
+//<Подключаем шрифты>=======================================================================================
+
+//</Подключаем шрифты>=======================================================================================
+
+//<Иконочные шрифты>==========================================================================================
+
+//</Иконочные шрифты>==========================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontfamily: "PT Sans";
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>=======================================================================================================
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$minwidth: 320px;
+$mw: 970;
+$md1: $mw + 12;
+$md2: 991.98;
+$md3: 768.98;
+$md4: 479.98;
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+@import "null.scss";
+body {
+  color: #000;
+  font-size: 14px;
+  &.lock {
+    overflow: hidden;
+  }
+}
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  &.loaded {
+  }
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container {
+  max-width: $mw + px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 10px;
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+@import "forms.scss";
+@import "ui.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+//@import "../../js/fancybox/jquery.fancybox.scss";
+//@import "datepicker.scss";
+//@import "fontawesome.scss";
+//@import "popover.min.scss";
+//@import "baguetteBox.scss";
+//@import "pagging.scss";
+//@import "icons.scss";
+@import "popup.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "home.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+.page {
+  flex: 1 1 auto;
+}
+//====================================================================================================
+.main-slider {
+  position: relative;
+
+  &__body {
+    display: flex;
+    align-items: stretch;
+  }
+
+  &__control {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    bottom: 0px;
+    transform: translate(-50%, 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      content: "";
+      background-color: #bb9c65;
+      position: absolute;
+      width: 70%;
+      height: 70%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
+.item-main-slider {
+  text-align: center;
+  padding: 30px 0px 100px 0px;
+  position: relative;
+  &__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+  }
+
+  &__text {
+    max-width: 700px;
+    margin: 25px auto 0;
+    flex: 1 1 auto;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: calc(25 / 15);
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn {
+    margin: 55px 0px 0px 0px;
+  }
+
+  &__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
+.control-main-slider {
+  .slick-arrow {
+    position: relative;
+    z-index: 2;
+    width: 14px;
+    height: 24px;
+    background: url("../../img/icons/arrow-prev.png") 0 0 no-repeat;
+    cursor: pointer;
+
+    &.slick-next {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__decor {
+    position: relative;
+    z-index: 2;
+    margin: 0 12px;
+    animation: rotate 5s infinite linear;
+  }
+}
+@keyframes rotate {
+  0% {
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+//====================================================================================================
+.lots {
+  padding: 85px 0px 63px 0px;
+
+  &__header {
+    margin: 0px 0px 40px 0px;
+  }
+}
+
+.block-header {
+  &__title {
+    margin: 0px 0px 20px 0px;
+  }
+}
+
+.contlor-slider-lots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .slick-arrow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 108px;
+    height: 35px;
+    flex: 0 0 108px;
+    background: url("../../img/icons/lots-slider.svg") left no-repeat;
+    @media (max-width: 450px) {
+      width: 50px;
+      flex: 0 0 50px;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid #bb9c66;
+    }
+    &.slick-next {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__link {
+    flex: 0 0 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "PFDin";
+    font-size: 21px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #000000;
+    background: url("../../img/icons/ellipse-big.png") 0 0 no-repeat;
+    margin: 0px 40px;
+  }
+}
+
+.lots {
+  &__slider {
+  }
+}
+.slider-lots {
+  max-width: 100%;
+  &__body {
+    margin: 0px -50px 50px;
+    @media (max-width: 980px) {
+      margin: 0px -15px 50px;
+    }
+  }
+
+  &__slide {
+    margin: 0 50px;
+    @media (max-width: 980px) {
+      margin: 0px 15px;
+    }
+    @media (max-width: $md3+px) {
+      margin: 0px 25px;
+    }
+  }
+
+  &__control {
+  }
+}
+.lot {
+  max-width: 251px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  @media (max-width: 400px) {
+    max-width: 100%;
+  }
+
+  &__header {
+    text-align: center;
+    margin: 0px 0px 30px 0px;
+    position: relative;
+  }
+
+  &__image {
+    display: block;
+    padding: 0px 0px 98% 0px;
+    border: 3px solid #bb9c66;
+  }
+
+  &__timer {
+  }
+
+  &__title {
+    font-family: "PFDin";
+    color: #000000;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: calc(25 / 21);
+    text-transform: uppercase;
+    flex: 1 1 auto;
+    z-index: 2;
+    margin: 0px 0px 28px/21px * 1em 0px;
+    transform: color 0.5s;
+    @media (max-width: 980px) {
+      font-size: 18px;
+    }
+    @media (min-width: 992px) {
+      &:hover {
+        color: #bb9c66;
+      }
+    }
+  }
+
+  &__info {
+  }
+
+  &__btn {
+    margin: 0px 25px;
+  }
+}
+.timer-lot {
+  &__icon {
+  }
+
+  &__item {
+  }
+}
+.info-lot {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 35px 0px;
+  &__statistic {
+    flex: 0 0 50px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &__icon {
+    width: 25px * 0.72;
+    height: 25px * 0.72;
+    margin: 0px auto 10px auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      background-color: #000000;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__value {
+    color: #000000;
+    font-size: 14px;
+    padding: 0px 0px 5px 0px;
+    border-bottom: 1px solid #bb9c66;
+  }
+
+  &__current-bet {
+    flex: 1 1 auto;
+    @media (max-width: 980px) {
+      flex: 0 0 auto;
+    }
+  }
+}
+.current-bet-info-lot {
+  padding: 0 5px;
+  position: relative;
+  @media (max-width: 980px) {
+    padding: 0 15px;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 1px solid #bb9c66;
+  }
+  div {
+    position: relative;
+    z-index: 2;
+  }
+  &__label {
+    color: #000000;
+    font-size: 14px;
+    margin: 0px 0px 5px 0px;
+  }
+
+  &__value {
+    font-family: "BravoRG";
+    color: #1c242a;
+    font-size: 50px;
+    font-weight: 400;
+    white-space: nowrap;
+    @media (max-width: 980px) {
+      font-size: 35px;
+    }
+  }
+
+  &__currency {
+    font-size: 14px;
+  }
+}
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================
